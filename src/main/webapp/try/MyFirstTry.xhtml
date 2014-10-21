@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+	<center>
+		<h3>
+			<h:outputText value="#{myFirstTryController.youSay}" />
+		</h3><br /><br />
+		
+		<h:form>
+			<h:panelGrid columns="2">
+				Name  
+				<h:inputText value="#{myFirstTryController.name}" />
+				
+				Gender
+				<h:selectOneRadio value="#{myFirstTryController.gender}">
+					<f:selectItem itemValue="L" itemLabel="Laki-laki"/>
+					<f:selectItem itemValue="P" itemLabel="Perempuan"/>
+				</h:selectOneRadio>
+			
+				Birth Date
+				<h:inputText value="#{myFirstTryController.birthDate}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:inputText>
+			
+				Age  
+				<h:inputSecret value="#{myFirstTryController.age}" />
+				
+				Hobi
+				<h:selectOneMenu value="#{myFirstTryController.hobi}">
+					<f:selectItem itemValue="Futball Soccer" itemLabel="Futball Soccer"/>
+					<f:selectItem itemValue="Bascket Ball" itemLabel="Bascket Ball"/>
+					<f:selectItem itemValue="Volley Ball" itemLabel="Volley Ball"/>
+					<f:selectItem itemValue="Tennis" itemLabel="Tennis"/>
+					<f:selectItem itemValue="Base Ball" itemLabel="Base Ball"/>
+				</h:selectOneMenu>
+			
+				Alamat 
+				<h:inputTextarea value="#{myFirstTryController.alamat}" />
+				
+				Kota
+				<h:inputText value="#{myFirstTryController.kota}" />
+				
+				Mobile Phone
+				<h:inputText value="#{myFirstTryController.mobilePhone}" />
+				
+			</h:panelGrid>
+			
+			<h:commandButton action="#{myFirstTryController.personalAgain}" value="submit" />
+		</h:form>
+	</center>
+
+
+</body>
+</html>
