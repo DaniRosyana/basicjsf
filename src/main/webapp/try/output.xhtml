@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+<center>
+	<h3>Data Peribadi</h3>
+	<h:panelGrid columns="2">
+		Name  
+		<h:outputText value="#{myFirstTryController.name}" />
+		Gender  
+		<h:outputText value="#{myFirstTryController.gender}" />
+		Birth Date  
+		<h:outputText value="#{myFirstTryController.birthDate}"> <f:convertDateTime pattern="dd-MMMM-yyyy"/> </h:outputText>
+		Age  
+		<h:outputText value="#{myFirstTryController.age}" />
+		Hoby  
+		<h:outputText value="#{myFirstTryController.hobi}" />
+		Mobile Phone 
+		<h:outputText value="#{myFirstTryController.mobilePhone}" />
+		Alamat  
+		<h:outputText value="#{myFirstTryController.alamat}" />
+		Kota 
+		 <h:outputText value="#{myFirstTryController.kota}" />
+	</h:panelGrid>
+</center>
+</body>
+</html>
