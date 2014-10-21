@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	
+	<body>
+		<h:form>
+			<h:inputHidden value="#{product.productId}" converter="javax.faces.Long" />
+			<h:inputHidden value="#{product.categoryId}" converter="javax.faces.Long" />
+			<h:inputHidden value="#{product.supplierId}" converter="javax.faces.Long" />
+			<h:messages />
+				
+				Name Product  : <h:inputText value="#{product.name}" required="true" label="name" ><f:validateLength maximum="50"/> </h:inputText><br />
+				Price Product : <h:inputText  value="#{product.price}" required="true" label="price" converter="javax.faces.BigDecimal"><f:validateLength maximum="18"/></h:inputText><br />
+				Stock Product : <h:inputText value="#{product.stock}" required="true" label="stock" converter="javax.faces.Integer"><f:validateLength maximum="11" /></h:inputText><br />
+				Description   : <h:inputText value="#{product.description}" required="true" label="description"><f:validateLength maximum="255" /></h:inputText><br />
+				Category      : <h:selectOneMenu value="#{product.categoryId}" required="true" label="category" converter="javax.faces.Long">
+							 	<f:selectItem itemValue="1" itemLabel="Sepatu"/>
+							 	<f:selectItem itemValue="2" itemLabel="Buku Pendidikan"/>
+			                	<f:selectItem itemValue="6" itemLabel="Elektronik"/>
+			                  	<f:selectItem itemValue="23" itemLabel="Buku Cerita"/>
+			                  	<f:selectItem itemValue="25" itemLabel="Rak Buku"/>
+			                  	<f:selectItem itemValue="26" itemLabel="Smarth Phone"/>
+			                  	<f:selectItem itemValue="27" itemLabel="Notebook"/>
+			                  	<f:selectItem itemValue="28" itemLabel="Smarthwatch"/>
+			                  	<f:selectItem itemValue="29" itemLabel="Smarthwatch"/>
+		                     </h:selectOneMenu><br/>
+				Supplier      : <h:selectOneMenu value="#{product.supplierId}" required="true" label="Supplier" converter="javax.faces.Long">
+							 	<f:selectItem itemValue="1" itemLabel="Apple"/>
+							 	<f:selectItem itemValue="2" itemLabel="Lenovo"/>
+			                	<f:selectItem itemValue="3" itemLabel="Samsung"/>
+			                  	<f:selectItem itemValue="4" itemLabel="Asus"/>
+			                  	
+		                     </h:selectOneMenu><br/>
+			<h:commandButton action="#{product.saveOrUpdate}" value="Save" />
+		</h:form>
+	</body>
+</html>

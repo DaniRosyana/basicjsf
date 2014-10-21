@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+	<h:dataTable var="p" value="#{productManagementListController.products}">
+		<h:column>
+			<f:facet name="header">Name Product</f:facet>
+			<h:outputText value="#{p.name}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Price Product</f:facet>
+			<h:outputText value="#{p.price}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Stock Product</f:facet>
+			<h:outputText value="#{p.stock}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Category</f:facet>
+			<h:outputText value="#{p.category.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Supplier</f:facet>
+			<h:outputText value="#{p.supplier.id}" />
+		</h:column>
+		
+		<h:column>
+		<f:facet name="header">Action</f:facet>
+		<h:link outcome="form"> <f:param name="id" value="#{p.id}"/> Edit </h:link>
+		</h:column>
+	</h:dataTable>
+	<h:link value="New Product..." outcome="form"/>
+	
+</body> 
+</html>
