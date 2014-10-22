@@ -29,13 +29,15 @@ public class ProductManagementController {
 	
 	public ProductManagementController() {
 		
-		String id = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		
 		if (id != null) {
 			productId = Long.valueOf(id);
 			
 			Session session = HibernateUtil.openSession();
+            Transaction trx = session.beginTransaction();
 			
-			Product products = (Product) session.get(Product.class, productId);
+            Product products = (Product) session.get(Product.class, productId);
 			categoryId = products.getCategory().getId();
 			supplierId = products.getSupplier().getId();
 			
@@ -44,6 +46,7 @@ public class ProductManagementController {
 			stock = products.getStock();
 			description = products.getDescription();
 			
+			trx.commit();
 			session.close();
 		}
 	}
@@ -52,14 +55,13 @@ public class ProductManagementController {
 		Session session = HibernateUtil.openSession();
 		Transaction trx = session.beginTransaction();
 		
-		long IdCategory = Long.valueOf(categoryId);
-		long IdSupplier = Long.valueOf(supplierId);
 		int stocks = Integer.valueOf(stock);
 		
 		Product product = new Product();
-		Category category = (Category) session.get(Category.class, IdCategory);
-		Supplier supplier = (Supplier) session.get(Supplier.class, IdSupplier);
+		Category category = (Category) session.get(Category.class, categoryId);
+		Supplier supplier = (Supplier) session.get(Supplier.class, supplierId);
 		
+		product.setId(productId);
 		product.setName(name);
 		product.setPrice(price);
 		product.setStock(stocks);
@@ -74,6 +76,22 @@ public class ProductManagementController {
 		return "list";
 	}
 
+	public String deleteProduct(){
+		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		
+		long idProduct = Long.parseLong(id);
+		
+		Session session = HibernateUtil.openSession();
+		Transaction trx = session.beginTransaction();
+		
+		Product products = (Product) session.get(Product.class, idProduct);
+		
+		session.delete(products);
+		trx.commit();
+		session.close();
+		
+		return "list";
+	}
 	
 	
 	public String getName() {
